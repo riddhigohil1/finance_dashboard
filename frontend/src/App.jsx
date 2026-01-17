@@ -1,15 +1,23 @@
-import { useState } from "react";
 import "./assets/css/style.css";
-import Header from "./components/Header";
-import Main from "./components/Main";
-import Footer from "./components/Footer";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Register from "./pages/Register";
+import Home from "./pages/Home";
+import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
+import Login from "./pages/Login.jsx";
 
 function App() {
   return (
     <>
-      <Header />
-      <Main />
-      <Footer />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </>
   );
 }

@@ -1,8 +1,10 @@
-export default function Main() {
+import Button from "../components/Button";
+
+export default function Home() {
   return (
     <>
       <div className="container">
-        <div className="p-5 text-center text-light bg-light-dark rounded">
+        <div className="p-5 text-center bg-light-dark rounded">
           <h1>Finance Dashboard</h1>
           <p className="lead">
             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -15,9 +17,7 @@ export default function Main() {
             and more recently with desktop publishing software like Aldus
             PageMaker including versions of Lorem Ipsum.
           </p>
-          <a href="" className="btn btn-info">
-            Login
-          </a>
+          <Button class="btn-info" text="Login" />
         </div>
       </div>
     </>

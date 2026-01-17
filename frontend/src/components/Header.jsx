@@ -1,19 +1,18 @@
+import { Link } from "react-router-dom";
+import Button from "./Button";
+
 export default function Header() {
   return (
     <>
       <nav className="navbar container pt-3 pb-3">
-        <a href="/" className="navbar-brand text-light">
+        <Link to="/" className="navbar-brand">
           Finance Dashboard
-        </a>
+        </Link>
 
         <div>
-          <a href="" className="btn btn-outline-info">
-            Login
-          </a>
+          <Button class="btn-outline-info" url="/login" text="Login" />
           &nbsp; &nbsp;
-          <a href="" className="btn btn-info">
-            Register
-          </a>
+          <Button class="btn-info" url="/register" text="Register" />
         </div>
       </nav>
     </>
