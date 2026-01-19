@@ -2,6 +2,8 @@ asgiref
 Django
 django-cors-headers
 djangorestframework
+djangorestframework_simplejwt
+PyJWT
 python-decouple
 sqlparse
 typing_extensions

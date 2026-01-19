@@ -17,7 +17,7 @@ export default function Home() {
             and more recently with desktop publishing software like Aldus
             PageMaker including versions of Lorem Ipsum.
           </p>
-          <Button class="btn-info" text="Login" />
+          <Button class="btn-info" text="Click here" />
         </div>
       </div>
     </>
