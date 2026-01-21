@@ -1,10 +1,10 @@
 import { createContext, useState } from "react";
 
 const AuthContext = createContext(null);
-
+const accessTokenName = import.meta.env.VITE_ACCESS_TOKEN_NAME;
 const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(
-    !!localStorage.getItem("accessToken")
+    !!localStorage.getItem(accessTokenName),
   );
 
   return (

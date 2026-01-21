@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import Button from "./Button";
-import { AuthContext } from "../AuthProvider";
+import { AuthContext } from "../context/AuthProvider";
 import { useContext } from "react";
 
 export default function Header() {
@@ -8,8 +8,10 @@ export default function Header() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
+    const accessTokenName = import.meta.env.VITE_ACCESS_TOKEN_NAME;
+    const refreshTokenName = import.meta.env.VITE_REFRESH_TOKEN_NAME;
+    localStorage.removeItem(accessTokenName);
+    localStorage.removeItem(refreshTokenName);
     setLoggedIn(false);
     navigate("/login");
   };
@@ -22,9 +24,13 @@ export default function Header() {
 
         <div>
           {loggedIn ? (
-            <button className="btn btn-danger" onClick={handleLogout}>
-              Logout
-            </button>
+            <>
+              <Button class="btn-info" url="/dashboard" text="Dashboard" />
+              &nbsp; &nbsp;
+              <button className="btn btn-danger" onClick={handleLogout}>
+                Logout
+              </button>
+            </>
           ) : (
             <>
               <Button class="btn-outline-info" url="/login" text="Login" />

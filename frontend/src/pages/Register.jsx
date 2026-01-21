@@ -9,6 +9,7 @@ export default function Register() {
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState(false);
   const [loading, setLoading] = useState(false);
+  const baseURL = import.meta.env.VITE_BACKEND_API_BASEURL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,10 +24,7 @@ export default function Register() {
     try {
       console.log("Registration:");
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/v1/register/",
-        userData
-      );
+      const response = await axios.post(baseURL + "/register/", userData);
       setErrors({});
       setSuccessMessage(true);
       setEmail("");

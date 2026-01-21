@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import { Title } from "react-head";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../AuthProvider";
+import { AuthContext } from "../context/AuthProvider";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -11,19 +11,18 @@ export default function Login() {
   const [errorMsg, seterrorMsg] = useState("");
   const navigate = useNavigate();
   const { loggedIn, setLoggedIn } = useContext(AuthContext);
-
+  const baseURL = import.meta.env.VITE_BACKEND_API_BASEURL;
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
     const useData = { username, password };
 
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/v1/token/",
-        useData
-      );
-      localStorage.setItem("accessToken", response.data.access);
-      localStorage.setItem("refreshToken", response.data.refresh);
+      const response = await axios.post(baseURL + "/token/", useData);
+      const accessTokenName = import.meta.env.VITE_ACCESS_TOKEN_NAME;
+      const refreshTokenName = import.meta.env.VITE_REFRESH_TOKEN_NAME;
+      localStorage.setItem(accessTokenName, response.data.access);
+      localStorage.setItem(refreshTokenName, response.data.refresh);
       setLoggedIn(true);
       navigate("/");
     } catch (error) {

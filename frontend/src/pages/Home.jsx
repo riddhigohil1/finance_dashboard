@@ -1,8 +1,10 @@
+import { Title } from "react-head";
 import Button from "../components/Button";
 
 export default function Home() {
   return (
     <>
+      <Title>Finance Dashboard</Title>
       <div className="container">
         <div className="p-5 text-center bg-light-dark rounded">
           <h1>Finance Dashboard</h1>
