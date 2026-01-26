@@ -22,4 +22,5 @@ urlpatterns = [
 
     #Base API Endpoint
     path('api/v1/', include('api.urls')), 
+    path('api/', include('finance.urls')),
 ]
