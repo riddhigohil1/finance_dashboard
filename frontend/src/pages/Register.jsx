@@ -24,7 +24,10 @@ export default function Register() {
     try {
       console.log("Registration:");
 
-      const response = await axios.post(baseURL + "/register/", userData);
+      const response = await axios.post(
+        baseURL + "account/register/",
+        userData,
+      );
       setErrors({});
       setSuccessMessage(true);
       setEmail("");

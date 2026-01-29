@@ -9,6 +9,7 @@ import AuthProvider from "./context/AuthProvider.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import PrivateRoute from "./routes/PrivateRoute.jsx";
 import PublicRoute from "./routes/PublicRoute.jsx";
+import Transactions from "./pages/Transactions.jsx";
 
 function App() {
   return (
@@ -39,6 +40,14 @@ function App() {
               element={
                 <PrivateRoute>
                   <Dashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/transactions"
+              element={
+                <PrivateRoute>
+                  <Transactions />
                 </PrivateRoute>
               }
             />

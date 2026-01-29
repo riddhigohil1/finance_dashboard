@@ -41,7 +41,7 @@ axiosInstance.interceptors.response.use(
       const refreshTokenName = import.meta.env.VITE_REFRESH_TOKEN_NAME;
       const refreshToken = localStorage.getItem(refreshTokenName);
       try {
-        const response = await axiosInstance.post("/token/refresh/", {
+        const response = await axiosInstance.post("/account/token/refresh/", {
           refresh: refreshToken,
         });
 

@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <>
       <nav className="navbar container pt-3 pb-3">
-        <Link to="/" className="navbar-brand">
+        <Link to="/" className="navbar-brand link-info fw-bold fs-3">
           Finance Dashboard
         </Link>
 
@@ -26,6 +26,12 @@ export default function Header() {
           {loggedIn ? (
             <>
               <Button class="btn-info" url="/dashboard" text="Dashboard" />
+              &nbsp; &nbsp;
+              <Button
+                class="btn-info"
+                url="/transactions"
+                text="Transactions"
+              />
               &nbsp; &nbsp;
               <button className="btn btn-danger" onClick={handleLogout}>
                 Logout

@@ -18,7 +18,7 @@ export default function Login() {
     const useData = { username, password };
 
     try {
-      const response = await axios.post(baseURL + "/token/", useData);
+      const response = await axios.post(baseURL + "account/token/", useData);
       const accessTokenName = import.meta.env.VITE_ACCESS_TOKEN_NAME;
       const refreshTokenName = import.meta.env.VITE_REFRESH_TOKEN_NAME;
       localStorage.setItem(accessTokenName, response.data.access);

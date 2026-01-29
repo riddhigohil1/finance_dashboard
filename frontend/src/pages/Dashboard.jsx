@@ -7,7 +7,6 @@ export default function Dashboard() {
     const fetchData = async () => {
       try {
         const response = await axiosInstance.get("/profile-view/");
-        console.log("Dashboard data:", response.data);
       } catch (error) {
         console.error("Error fetching dashboard data:", error);
       }
