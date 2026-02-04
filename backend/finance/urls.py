@@ -8,7 +8,7 @@ router = DefaultRouter()
 router.register('categories', CategoryViewSet, basename='categories')
 
 urlpatterns = [
-  path("transactions/upload/", UploadTransactionCSV.as_view(), name="transaction-upload"),
+  path("transactions/upload", UploadTransactionCSV.as_view(), name="transaction-upload"),
   path("transactions", TransactionListView.as_view(), name="transaction-list"),
 ]
 urlpatterns += router.urls

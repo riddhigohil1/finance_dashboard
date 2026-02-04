@@ -1,12 +1,13 @@
 import axios from "axios";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
-export default function TransactionsUpload() {
+export default function TransactionsUpload({ onUpload }) {
   const [file, setFile] = useState(null);
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const baseURL = import.meta.env.VITE_BACKEND_API_BASEURL;
   const accessTokenName = import.meta.env.VITE_ACCESS_TOKEN_NAME;
+  const fileInputRef = useRef(null);
 
   const handleUpload = async () => {
     if (!file) {
@@ -18,13 +19,16 @@ export default function TransactionsUpload() {
     formData.append("file", file);
     try {
       const token = localStorage.getItem(accessTokenName);
-      await axios.post(baseURL + "transactions/upload", formData, {
+      await axios.post(baseURL + "finance/transactions/upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         },
       });
       setSuccessMsg("CVS uploaded successfully");
+      setFile(null);
+      fileInputRef.current.value = null;
+      onUpload();
     } catch (error) {
       setErrorMsg("Upload failed !");
     }
@@ -52,6 +56,7 @@ export default function TransactionsUpload() {
             className="form-control"
             type="file"
             accept=".csv"
+            ref={fileInputRef}
             name="file"
             onChange={(e) => setFile(e.target.files[0])}
           />
