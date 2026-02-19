@@ -59,6 +59,9 @@ export default function TransactionsList({ refreshList }) {
                         <strong>Description</strong>
                       </TableCell>
                       <TableCell>
+                        <strong>Category</strong>
+                      </TableCell>
+                      <TableCell>
                         <strong>Amount</strong>
                       </TableCell>
                     </TableRow>
@@ -70,6 +73,11 @@ export default function TransactionsList({ refreshList }) {
                           {dayjs(t.date).format("DD MMM YYYY")}
                         </TableCell>
                         <TableCell>{t.description}</TableCell>
+                        <TableCell>
+                          <span className={t.category ? "" : "gray_light"}>
+                            {t.category ? t.category.name : "Uncategorized"}
+                          </span>
+                        </TableCell>
                         <TableCell
                           sx={{
                             color: t.amount < 0 ? "red" : "green",

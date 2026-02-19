@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from io import TextIOWrapper
 import csv
 from finance.models.transaction import Transaction
+from finance.services.categorization import categorize_transaction
 
 class UploadTransactionCSV(APIView):
   permission_classes = [IsAuthenticated]
@@ -24,13 +25,15 @@ class UploadTransactionCSV(APIView):
     # Loop through rows and save transactions
     for row in reader:
       try:
-        Transaction.objects.create(
+        tx = Transaction.objects.create(
           user=request.user,
           date=row['Date'],
           description=row['Description'],
           amount=row['Amount'],
           type="income" if float(row['Amount']) > 0 else "expense",
         )
+        # Categorize transaction
+        categorize_transaction(tx)
       except Exception as e:
         print("Error:",e)
         continue
